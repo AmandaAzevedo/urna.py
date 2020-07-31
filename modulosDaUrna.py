@@ -1,3 +1,5 @@
+# -*- coding: utf8 -*-
+
 #Módulos da urna
 import os
 from pygame import mixer
@@ -22,7 +24,7 @@ def menu():
 
 
 def cadastraEleitor(eleitores):
-    arquivo= open("dadosDosEleitores.txt",'w')
+    arquivo= open("dadosDosEleitores.txt",'w', encoding='utf8')
     for e in eleitores:
         arquivo.write("%s;%s;%s;%s;%s\n"%(e[0],e[1],e[2],e[3],e[4]))
     arquivo.close()
@@ -30,16 +32,14 @@ def cadastraEleitor(eleitores):
 
 
 def recuperaEleitores ():
-	eleitores=[]
-	if (os.path.exists("dadosDosEleitores.txt")):
-		arquivo=open ("dadosDosEleitores.txt",'r')
-		for linha in arquivo:
-			eleitor=linha.strip().split(";")
-			eleitores.append(eleitor)
-		arquivo.close()
-	return eleitores
-        
-
+    eleitores=[]
+    if (os.path.exists("dadosDosEleitores.txt")):
+        arquivo=open("dadosDosEleitores.txt",'r', encoding='utf8')
+        for linha in arquivo:
+            eleitor=linha.strip().split(";")
+            eleitores.append(eleitor)
+        arquivo.close()
+    return eleitores
 
 def verificaAMatriculaNaLista(matricula,eleitores):
     for eleitor in eleitores:
@@ -196,7 +196,7 @@ def atualizaEleitor(matricula,eleitores):
 
                     
 def cadastraCandidato(candidatos):
-    arquivo= open("dadosDosCandidatos.txt",'w')
+    arquivo= open("dadosDosCandidatos.txt",'w', encoding='utf8')
     for c in candidatos:
         arquivo.write("%s;%s;%s;%s;%s\n"%(c[0],c[1],c[2],c[3],c[4]))
     arquivo.close()
@@ -212,14 +212,14 @@ def verificaONumeroNaLista(numero,candidatos):
 
 
 def recuperaCandidatos ():
-	candidatos=[]
-	if (os.path.exists("dadosDosCandidatos.txt")):
-		arquivo=open ("dadosDosCandidatos.txt",'r')
-		for linha in arquivo:
-			candidato=linha.strip().split(";")
-			candidatos.append(candidato)
-		arquivo.close()
-	return candidatos
+    candidatos=[]
+    if (os.path.exists("dadosDosCandidatos.txt")):
+        arquivo=open ("dadosDosCandidatos.txt",'r', encoding='utf8')
+        for linha in arquivo:
+            candidato=linha.strip().split(";")
+            candidatos.append(candidato)
+        arquivo.close()
+    return candidatos
         
 
 
@@ -333,7 +333,7 @@ def contabilizaVoto(voto,candidatos):
 
 
 
-def exibeInformaçõesDosEleitores(eleitores,matricula):
+def exibeInformacoesDosEleitores(eleitores,matricula):
     for eleitor in eleitores:
         if (eleitor[0] == matricula):
             print("---------------------------------------------------------")
@@ -346,7 +346,7 @@ def exibeInformaçõesDosEleitores(eleitores,matricula):
     
 
 def registraVoto(eleitores,candidatos,matriculaVerificada):
-    exibeInformaçõesDosEleitores(eleitores,matriculaVerificada)
+    exibeInformacoesDosEleitores(eleitores,matriculaVerificada)
     voto=""
     confirmar=False
     while (not confirmar):

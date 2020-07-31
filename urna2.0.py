@@ -1,3 +1,5 @@
+# -*- coding: utf8 -*-
+
 from modulosDaUrna import *
 
 eleitores=recuperaEleitores()
